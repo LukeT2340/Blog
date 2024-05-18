@@ -1,0 +1,11 @@
+.loginButton {
+    outline: none;
+    border: none;
+    color: white;
+    width: 15rem;
+}
+
+.title {
+    display: flex;
+    text-align: center;
+}
