@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "npm install --omit=dev"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
