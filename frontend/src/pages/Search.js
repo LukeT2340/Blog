@@ -1,11 +1,10 @@
-import { useBlogs } from "../hooks/useBlogs";
-import { Link } from "react-router-dom";
-import styles from "./Articles.module.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import useSearch from "../hooks/useSearch";
+import { useParams } from "react-router-dom";
 import BlogPreview from "../sharedComponents/BlogPreview";
 
-const Articles = () => {
-    const { blogs, isLoading, error } = useBlogs();
+const Search = () => {
+    const { searchText } = useParams();
+    const { blogs, isLoading, error } = useSearch(searchText);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -22,6 +21,6 @@ const Articles = () => {
             ))}
         </div>
     );
-};
+}
 
-export default Articles;
+export default Search;

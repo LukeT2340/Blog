@@ -8,11 +8,6 @@ import { useEffect } from 'react';
 const Blog = () => {
     const { blogTitle } = useParams();  
     const { blog, isLoading, error } = useBlog(blogTitle);
-    Prism.manual = true;
-
-    useEffect(() => {
-        Prism.highlightAll();
-    }, [blog]); 
 
     if (isLoading) {
         return <p>Loading...</p>;

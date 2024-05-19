@@ -5,6 +5,7 @@ import Blog from './pages/Blog.js';
 import Login from './pages/Login.js';
 import PostNew from './pages/PostNew.js';
 import Articles from './pages/Articles.js';
+import Search from './pages/Search.js';
 import CustomNavBar from './sharedComponents/CustomNavBar.js';
 import React, { useState } from 'react';
 import { useAuthContext } from './hooks/useAuthContext.js';
@@ -24,6 +25,7 @@ function App() {
             )}
             <Route path="/:blogTitle" element={<Blog />} /> 
             <Route path="/articles" element={<Articles />} />
+            <Route path="/search/:searchText" element={<Search />} />
             <Route path="*" element={<Navigate to="/home" />} />
 
           </Routes>

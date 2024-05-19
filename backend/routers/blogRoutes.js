@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser'); 
 const Blog = require('../models/Blog')
+const { Sequelize } = require('sequelize'); 
+const { Op } = require('sequelize');
 
 const requireAuth = require('../middleware/requireAuth');
 
@@ -51,6 +53,40 @@ router.get('/getMany', async (req, res) => {
     } catch (error) {
         console.error('Error fetching blogs:', error);
         return res.status(500).json({ message: 'Failed to fetch blog posts' });
+    }
+});
+
+// Search blogs
+router.get('/search', async (req, res) => {
+    try {
+        const searchText = req.query.searchText;
+        // Check if search text is provided
+        if (!searchText) {
+            return res.status(400).json({ error: 'Search text is required' });
+        }
+
+        // Perform case-insensitive search using Sequelize's "like" operator and MySQL's "LOWER" function
+        const blogs = await Blog.findAll({
+            where: {
+                [Op.or]: [
+                    Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('title')), 'LIKE', `%${searchText.toLowerCase()}%`),
+                    Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('description')), 'LIKE', `%${searchText.toLowerCase()}%`)
+                ]
+            },
+            attributes: ['id', 'title', 'createdAt', 'description', 'thumbnail', 'tags'],
+            order: [['createdAt', 'DESC']]
+        });
+
+        // Check if any blogs match the search criteria
+        if (blogs.length === 0) {
+            return res.status(404).json({ message: 'No blogs found matching the search criteria' });
+        }
+
+        // Return the matching blogs
+        return res.status(200).json(blogs);
+    } catch (error) {
+        console.error('Error searching blogs:', error);
+        return res.status(500).json({ error: 'Failed to search for blog posts' });
     }
 });
 
