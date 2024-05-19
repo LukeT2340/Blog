@@ -31,7 +31,7 @@ const BlogPreview = (blog) => {
                 <div className={styles.imageContainer}>
                     <img src={blog.thumbnail} className={`${styles.thumbnail} mb-2`}></img>
                     {isHovered && (
-                        <FontAwesomeIcon icon={faHandPointUp} className={styles.overlayIcon} />
+                        <FontAwesomeIcon icon={faHandPointUp} className={`${styles.overlayIcon}`} />
                     )}
                 </div>
                 <h1 className={`${styles.title} mx-3`}>{blog.title}</h1>
