@@ -8,7 +8,7 @@ const BlogPreview = (blog) => {
     const formattedDate = createdAt.toISOString().split('T')[0];
     const tags = blog.tags ? blog.tags.split(', ') : [];
     return (
-        <div className={`container d-flex flex-column border rounded col-md-3 col-sm-10 p-0 m-2 ${styles.blogPreview}`}>
+        <div className={`container d-flex shadow flex-column border rounded col-md-3 col-sm-10 p-0 m-2 ${styles.blogPreview}`}>
             <Link to={`/${urlTitle}`} className={`${styles.titleLink}`}>
                 <img src={blog.thumbnail} class={`${styles.thumbnail} mb-2`}></img>
                 <h1 className={`${styles.title} mx-1`}>{blog.title}</h1>
