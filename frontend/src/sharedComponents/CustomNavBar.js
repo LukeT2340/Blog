@@ -2,13 +2,14 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import styles from './NavBar.module.css';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CustomNavbar = () => {
     const [searchText, setSearchText] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSearchTextChange = (e) => {
         setSearchText(e.target.value);
@@ -19,16 +20,20 @@ const CustomNavbar = () => {
         navigate(`/search/${searchText}`);
     }
 
+    const isActive = (path) => {
+        return location.pathname === path ? styles.activeNavLink : '';
+    }
+
     return (
-        <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom `} expand='md'>
-            <Navbar.Brand href="/articles" className='mx-3'>Master Swift</Navbar.Brand>
+        <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom`} expand='md'>
+            <Navbar.Brand href="/articles" className={`mx-3 ${styles.brand}`}>Master Swift</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3' />
             <Navbar.Collapse id="basic-navbar-nav" className="mx-3">
                 <Nav className="mr-auto align-items-left">
-                    <Nav.Link href="/articles" className="d-flex align-items-center">
+                    <Nav.Link href="/articles" className={`d-flex align-items-center ${styles.navLink} ${isActive('/articles')}`}>
                         Articles
                     </Nav.Link>
-                    <Nav.Link href="/about" className="d-flex align-items-center">
+                    <Nav.Link href="/about" className={`d-flex align-items-center ${styles.navLink} ${isActive('/about')}`}>
                         About
                     </Nav.Link>
                 </Nav>
