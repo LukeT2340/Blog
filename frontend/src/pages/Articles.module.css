@@ -1,11 +1,14 @@
 .blogPreview {
     height: 30rem;
+    padding: 2rem;
+    border-radius: 20px;
 }
 
 .thumbnail {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .titleLink {
