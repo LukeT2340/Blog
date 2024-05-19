@@ -28,7 +28,7 @@ const Footer = () => {
                 <hr className={styles.hr} />
                 <div className="row">
                     <div className="col-md-12">
-                        <p className="text-center">&copy; 2024 Swift Tutorials. All Rights Reserved.</p>
+                        <p className="text-center">&copy; 2024 Master Swift. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>
