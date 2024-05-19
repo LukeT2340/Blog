@@ -45,3 +45,27 @@
 .paragraph {
     color: white;
 }
+
+.link {
+    display: flex;
+    text-decoration: none;
+}
+
+.link p {
+    font-weight: 600;
+}
+
+.linkIcon {
+    width: 2rem;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.contact h5, .about h5 {
+    font-size: 1.8rem;
+}
+
+.contact p {
+    font-size: 1rem;
+    font-weight: 600;
+}

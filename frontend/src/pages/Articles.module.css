@@ -112,3 +112,7 @@
     height: 80vh; 
     background-color: white; 
 }
+
+.errorPage {
+    height: 100vh;
+}

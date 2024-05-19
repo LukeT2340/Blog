@@ -12,7 +12,9 @@ const Articles = () => {
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className={styles.errorPage}>
+            <h1>{error}</h1>
+        </div>;
     }
 
     return (
