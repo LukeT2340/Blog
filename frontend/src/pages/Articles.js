@@ -8,7 +8,7 @@ const Articles = () => {
     const { blogs, isLoading, error } = useBlogs();
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className={styles.loadingPage}></div>;
     }
 
     if (error) {
