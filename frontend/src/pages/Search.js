@@ -21,13 +21,13 @@ const Search = () => {
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className={styles.errorPage}>{error}</div>;
     }
 
     return (
         <div className="row m-5">
             {blogs && blogs.length === 0 ? (
-                <h3 className="mr-auto">No search results for '{searchText}'</h3>
+                <h3 className={styles.noResultsPage}>No search results for '{searchText}'</h3>
             ) : <h3> Search results for '{searchText}'</h3>}
             {blogs && blogs.map((blog) => (
                 <BlogPreview key={blog.id} {...blog} />
