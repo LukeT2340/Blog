@@ -20,8 +20,7 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, SwiftUI!")
     }
-}
-        </pre>
+}</pre>
     </div>
     <p>In this initial setup, we simply display a text view with the message "Hello, SwiftUI!".</p>
 
@@ -35,8 +34,7 @@ struct ContentView: View {
         Text("Hello, SwiftUI!")
             .background(Color.blue) // Example with color
     }
-}
-        </pre>
+}</pre>
     </div>
     <p>In this example, we add a blue background color to the text view.</p>
     <p>You can also use an image as the background. For this, ensure you have an image named "background" in your asset catalog:</p>
@@ -48,8 +46,7 @@ struct ContentView: View {
         Text("Hello, SwiftUI!")
             .background(Image("background")) // Example with image
     }
-}
-        </pre>
+}</pre>
     </div>
     <p>Here, we add an image as the background of the text view.</p>
 
@@ -148,8 +145,7 @@ struct ContentView: View {
     <p>In this example, the background color toggles between yellow and gray when the text view is tapped.</p>
 
     <p>With these steps, you've learned how to add and customize backgrounds in SwiftUI using various modifiers and techniques. Feel free to experiment with different backgrounds and modifiers to create unique and visually appealing user interfaces!</p>
-</div>
-`
+</div>`
     const defaultStyles = `/* General Styles */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

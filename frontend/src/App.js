@@ -18,7 +18,6 @@ function App() {
         <CustomNavBar />
         <div className='d-flex justify-content-center align-items-center'>
           <Routes> 
-            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             {admin && (
               <Route path='/postNewBlog' element={<PostNew />} />
@@ -26,7 +25,7 @@ function App() {
             <Route path="/:blogTitle" element={<Blog />} /> 
             <Route path="/articles" element={<Articles />} />
             <Route path="/search/:searchText" element={<Search />} />
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="*" element={<Navigate to="/articles" />} />
 
           </Routes>
         </div>
