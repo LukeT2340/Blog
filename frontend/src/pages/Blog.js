@@ -45,7 +45,7 @@ const Blog = () => {
     }
 
     return (
-        <div className='container col-lg-8 col-sm-12 py-0'>
+        <div className='container col-lg-7 col-sm-12 py-0'>
             {blog && (
                 <>
                     <h6 className={styles.currentDirectory}>
