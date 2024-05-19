@@ -2,9 +2,9 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import styles from './NavBar.module.css';
-import { FaHome, FaTags } from "react-icons/fa";
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CustomNavbar = () => {
     const [searchText, setSearchText] = useState(null);
@@ -20,16 +20,16 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom `} expand='lg'>
-            <Navbar.Brand href="/home" className='mx-3'>Swift Tutorials</Navbar.Brand>
+        <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom `} expand='md'>
+            <Navbar.Brand href="/articles" className='mx-3'>Swift Tutorials</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3' />
             <Navbar.Collapse id="basic-navbar-nav" className="mx-3">
                 <Nav className="mr-auto align-items-left">
                     <Nav.Link href="/articles" className="d-flex align-items-center">
                         Articles
                     </Nav.Link>
-                    <Nav.Link href="/tags" className="d-flex align-items-center">
-                        Tags
+                    <Nav.Link href="/about" className="d-flex align-items-center">
+                        About
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

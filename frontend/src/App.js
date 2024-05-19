@@ -9,6 +9,7 @@ import Search from './pages/Search.js';
 import CustomNavBar from './sharedComponents/CustomNavBar.js';
 import React, { useState } from 'react';
 import { useAuthContext } from './hooks/useAuthContext.js';
+import Footer from './sharedComponents/Footer.js';
 
 function App() {
   const { admin } = useAuthContext();
@@ -26,9 +27,9 @@ function App() {
             <Route path="/articles" element={<Articles />} />
             <Route path="/search/:searchText" element={<Search />} />
             <Route path="*" element={<Navigate to="/articles" />} />
-
           </Routes>
         </div>
+        <Footer />
     </Router>
   );
 }

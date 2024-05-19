@@ -44,3 +44,22 @@
 .createdAt {
     font-weight: 600;
 }
+
+.articleHeader {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f6f6f6; 
+    padding: 20px; 
+}
+
+.articleTitle {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.articleBlurb {
+    font-size: 16px;
+    color: #666;
+}

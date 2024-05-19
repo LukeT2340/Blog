@@ -5,10 +5,12 @@ import styles from './Blog.module.css';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css';
 import 'prismjs/components/prism-swift';
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
     const { blogTitle } = useParams();
     const { blog, isLoading, error } = useBlog(blogTitle);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (blog && blog.content) {
@@ -39,11 +41,11 @@ const Blog = () => {
     }
 
     if (error) {
-        return <>{error}</>;
+        navigate('/articles');
     }
 
     return (
-        <div className='container col-lg-8 col-sm-12 my-3'>
+        <div className='container col-lg-8 col-sm-12 py-0'>
             {blog && (
                 <>
                     <h6 className={styles.currentDirectory}>
