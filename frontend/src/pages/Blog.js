@@ -37,7 +37,7 @@ const Blog = () => {
     }, [blog]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <div className={styles.loadingPage}></div>;
     }
 
     if (error) {
