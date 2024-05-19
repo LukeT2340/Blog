@@ -21,7 +21,7 @@ const CustomNavbar = () => {
 
     return (
         <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom `} expand='md'>
-            <Navbar.Brand href="/articles" className='mx-3'>Swift Tutorials</Navbar.Brand>
+            <Navbar.Brand href="/articles" className='mx-3'>Master Swift</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3' />
             <Navbar.Collapse id="basic-navbar-nav" className="mx-3">
                 <Nav className="mr-auto align-items-left">
