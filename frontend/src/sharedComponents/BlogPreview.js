@@ -9,7 +9,7 @@ const BlogPreview = (blog) => {
     const formattedDate = createdAt.toISOString().split('T')[0];
     const tags = blog.tags ? blog.tags.split(', ') : [];
     return (
-        <div className={`d-flex flex-column shadow col-md-2 col-sm-10 p-1 m-2 ${styles.blogPreview}`}>
+        <div className={`d-flex flex-column shadow col-md-2 col-sm-10 p-1 m-0 ${styles.blogPreview}`}>
             <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-items-center`}>
                 <img src={blog.thumbnail} className={`${styles.thumbnail} mb-2`}></img>
                 <h1 className={`${styles.title} mx-3`}>{blog.title}</h1>
