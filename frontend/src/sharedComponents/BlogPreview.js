@@ -15,7 +15,7 @@ const BlogPreview = (blog) => {
                 <h1 className={`${styles.title} mx-3`}>{blog.title}</h1>
             </Link>
             <p className={`${styles.description} mx-3`}>{blog.description}</p>
-            <div className="m-2 mt-auto">
+            <div className="mx-2 mt-auto">
                 <div className="d-flex ">
                     {tags.map((tag, index) => ( 
                         <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
