@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser'); 
 const bcrypt = require('bcrypt');
 const Admin = require('../models/Admin');
-const Blog = require('../models/Blog')
+const Blog = require('../models/Blog');
 const jwt = require('jsonwebtoken');
 const requireAuth = require('../middleware/requireAuth');
 
@@ -59,7 +59,6 @@ router.post('/postBlog', async (req, res) => {
             return res.status(400).json({ error: 'Author not found' });
         }
 
-        // Assuming you have a database model for blogs
         const newBlog = new Blog({
             title: title, 
             content,
@@ -81,7 +80,5 @@ router.post('/postBlog', async (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
-
-
 
 module.exports = router;

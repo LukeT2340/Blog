@@ -39,11 +39,14 @@ router.get('/getOne', async (req, res) => {
 // Retrieve blogs based on category
 router.get('/getMany', async (req, res) => {
     try {
+        // Log user's IP address to console
+        const ipAddress = req.ip;
+        console.log('User IP:', ipAddress);
+
         const blogs = await Blog.findAll({
             attributes: ['id', 'title', 'createdAt', 'description', 'thumbnail', 'tags'],
             order: [['createdAt', 'DESC']] 
         });
-        
 
         if (blogs.length === 0) { 
             return res.status(404).json({ message: 'No blogs found.' });
@@ -55,6 +58,7 @@ router.get('/getMany', async (req, res) => {
         return res.status(500).json({ message: 'Failed to fetch blog posts' });
     }
 });
+
 
 // Search blogs
 router.get('/search', async (req, res) => {
@@ -84,6 +88,5 @@ router.get('/search', async (req, res) => {
         return res.status(500).json({ error: 'Failed to search for blog posts' });
     }
 });
-
 
 module.exports = router;

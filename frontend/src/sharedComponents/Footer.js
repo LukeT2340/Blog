@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="row">
                 <div className="col-md-4">
                         <h5>About</h5>
-                        <p>Welcome to SwiftUI Tutorials! This blog is dedicated to providing high-quality tutorials, tips, and resources for learning SwiftUI - Apple's powerful and intuitive framework for building beautiful and engaging user interfaces across all Apple platforms.</p>
+                        <p className={`${styles.paragraph}`}>Welcome to SwiftUI Tutorials! This blog is dedicated to providing high-quality tutorials, tips, and resources for learning SwiftUI - Apple's powerful and intuitive framework for building beautiful and engaging user interfaces across all Apple platforms.</p>
                     </div>
                     <div className="col-md-4">
                         <h5>Links</h5>

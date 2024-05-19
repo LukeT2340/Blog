@@ -6,6 +6,16 @@ import Prism from 'prismjs';
 
 const NewPost = () => {
     const { post, isSuccess, error} = usePost();
+    const [formData, setFormData] = useState({
+        title: '',
+        content: '',
+        styles: '',
+        category: '',
+        tags: '',
+        thumbnail: '',
+        description: ''
+    });
+    const [previewHtml, setPreviewHtml] = useState('');
 
     const contentTemplate=`<div class="col">
     <h1>SwiftUI Tutorial: Adding a Background to a View</h1>
@@ -244,17 +254,6 @@ struct ContentView: View {
         flex: 1;
     }
 `;
-
-    const [formData, setFormData] = useState({
-        title: '',
-        content: '',
-        styles: '',
-        category: '',
-        tags: '',
-        thumbnail: '',
-        description: ''
-    });
-    const [previewHtml, setPreviewHtml] = useState('');
 
     const handleChange = (e) => {
         setFormData({
