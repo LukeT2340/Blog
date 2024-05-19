@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import BlogPreview from "../sharedComponents/BlogPreview";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
+import styles from "./Search.module.css";
 
 const Search = () => {
     const { searchText } = useParams();
@@ -16,7 +17,7 @@ const Search = () => {
     }, [navigate, searchText]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className={styles.loadingPage}></div>;
     }
 
     if (error) {
