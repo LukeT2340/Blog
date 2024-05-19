@@ -5,14 +5,44 @@
 
 .blogPreview:hover {
     transition: 0.4s ease-in-out;
-    width: 18rem;
+    width: 16rem;
+}
+
+.imageContainer {
+    position: relative;
+    display: inline-block;
+    margin: 0.4rem;
+}
+
+.overlayIcon {
+    display: inline;
+    position: absolute;
+    top: 75%; 
+    left: 85%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 1.5rem; 
+    pointer-events: none; 
+    background: rgba(0,0,0, 0.2);
+    padding: 0.7rem;
+    border-radius: 120rem;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }
 
 .thumbnail {
     height: 150px;
+    width: 100%;
     border-radius: 20px;
     object-fit: cover;
-    margin: 10px;
 }
 
 .titleLink {

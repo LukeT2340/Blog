@@ -2,16 +2,38 @@ import { useBlogs } from "../hooks/useBlogs";
 import { Link } from "react-router-dom";
 import styles from "../pages/Articles.module.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faH, faHand, faHandPointUp } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const BlogPreview = (blog) => {
     const urlTitle = blog.title.trim().replace(/\s+/g, '-');
     const createdAt = new Date(blog.createdAt);
     const formattedDate = createdAt.toISOString().split('T')[0];
     const tags = blog.tags ? blog.tags.split(', ') : [];
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
     return (
-        <div className={`d-flex flex-column shadow col-md-2 col-sm-10 p-1 m-2 ${styles.blogPreview}`}>
-            <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-items-center`}>
-                <img src={blog.thumbnail} className={`${styles.thumbnail} mb-2`}></img>
+        <div
+        className={`d-flex flex-column shadow col-md-2 col-sm-10 p-1 m-2 ${styles.blogPreview}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+    >
+                <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-items-center`}>
+                <div className={styles.imageContainer}>
+                    <img src={blog.thumbnail} className={`${styles.thumbnail} mb-2`}></img>
+                    {isHovered && (
+                        <FontAwesomeIcon icon={faHandPointUp} className={styles.overlayIcon} />
+                    )}
+                </div>
                 <h1 className={`${styles.title} mx-3`}>{blog.title}</h1>
             </Link>
             <p className={`${styles.description} mx-3`}>{blog.description}</p>
