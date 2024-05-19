@@ -153,7 +153,6 @@ struct ContentView: View {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
         margin: 0;
-        background-color: #f0f2f5;
         color: #333;
     }
     
@@ -260,6 +259,7 @@ struct ContentView: View {
         flex: 1;
     }
     
+    
     `;
 
     const [formData, setFormData] = useState({
@@ -268,7 +268,8 @@ struct ContentView: View {
         styles: '',
         category: '',
         tags: '',
-        thumbnail: ''
+        thumbnail: '',
+        description: ''
     });
     const [previewHtml, setPreviewHtml] = useState('');
 
@@ -369,6 +370,10 @@ struct ContentView: View {
                         <div className="mb-3">
                             <label htmlFor="thumbnail" className="form-label">Thumbnail URL:</label>
                             <input type="text" id="thumbnail" name="thumbnail" className="form-control" value={formData.thumbnail} onChange={handleChange} />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="description" className="form-label">Description:</label>
+                            <input type="text" id="description" name="description" className="form-control" value={formData.description} onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>

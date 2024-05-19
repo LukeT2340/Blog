@@ -36,21 +36,15 @@ router.get('/getOne', async (req, res) => {
 
 // Retrieve blogs based on category
 router.get('/getMany', async (req, res) => {
-    const category = req.query.category;
-
     try {
-        if (!category) {
-            return res.status(400).json({ message: 'Category is required' });
-        }
-
         const blogs = await Blog.findAll({
-            where: { category: category },
-            attributes: ['id', 'title', 'updatedAt'],
-            limit: 15,
+            attributes: ['id', 'title', 'createdAt', 'description', 'thumbnail', 'tags'],
+            order: [['createdAt', 'DESC']] 
         });
+        
 
         if (blogs.length === 0) { 
-            return res.status(404).json({ message: 'There are currently no blogs in this category.' });
+            return res.status(404).json({ message: 'No blogs found.' });
         }
 
         return res.status(200).json(blogs);

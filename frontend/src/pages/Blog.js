@@ -28,7 +28,7 @@ const Blog = () => {
         <div className='container col-lg-8 col-sm-12 my-3'>
             {blog && (
                 <>
-                    <h6 className={`${styles.currentDirectory}`}>{`SwiftUI -> Tutorials -> ${blog.category} -> ${blog.title}`}</h6>
+                    <h6 className={`${styles.currentDirectory}`}>{`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}</h6>
                     <div>
                         <div>
                             <style dangerouslySetInnerHTML={{ __html: blog.styles }} />

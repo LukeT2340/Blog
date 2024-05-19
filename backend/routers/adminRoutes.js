@@ -47,10 +47,10 @@ router.use(requireAuth);
 router.post('/postBlog', async (req, res) => {
     try {
         const blog = req.body.formData;
-        const { title, content, styles, category, tags, thumbnail } = blog;
+        const { title, content, styles, category, tags, thumbnail, description } = blog;
         const authorId = req.body.authorId;
         // Validate the required fields
-        if (!title || !content || !styles || !authorId || !category) {
+        if (!title || !content || !styles || !authorId || !category || !description || !tags) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
@@ -67,7 +67,8 @@ router.post('/postBlog', async (req, res) => {
             author: author.name,
             category,
             tags,
-            thumbnail
+            thumbnail,
+            description
         });
 
         // Save the blog to the database

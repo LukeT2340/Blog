@@ -49,6 +49,9 @@ const Blog = sequelize.define('blog', {
     },
     thumbnail: {
         type: DataTypes.STRING(300),
+    },
+    description: {
+        type: DataTypes.STRING(70)
     }
 }, {
     tableName: 'blogs'

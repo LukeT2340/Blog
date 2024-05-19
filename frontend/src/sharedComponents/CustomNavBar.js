@@ -20,17 +20,17 @@ const CustomNavbar = () => {
     }
 
     return (
-        <Navbar data-bs-theme="dark" className={`${styles.navBar} border-bottom `} expand='lg'>
+        <Navbar data-bs-theme="light" className={`${styles.navBar} border-bottom `} expand='lg'>
             <Navbar.Brand href="/home" className='mx-3'>Swift Tutorials</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-3' />
             <Navbar.Collapse id="basic-navbar-nav" className="mx-3">
                 <Nav className="mr-auto align-items-left">
-
-                    <NavDropdown title="Tutorials" className="d-flex align-items-center">
-                        <NavDropdown.Item href="/categories/beginner">Beginner</NavDropdown.Item>
-                        <NavDropdown.Item href="/categories/intermediate">Intermediate</NavDropdown.Item>
-                        <NavDropdown.Item href="/categories/advanced">Advanced</NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link href="/articles" className="d-flex align-items-center">
+                        Articles
+                    </Nav.Link>
+                    <Nav.Link href="/tags" className="d-flex align-items-center">
+                        Tags
+                    </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
 

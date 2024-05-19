@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useCategoryBlogs = (category) => {
+export const useBlogs = () => {
     const [blogs, setBlogs] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +10,7 @@ export const useCategoryBlogs = (category) => {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/getMany/?category=${category}`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/getMany`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -37,4 +37,4 @@ export const useCategoryBlogs = (category) => {
     return { blogs, isLoading, error };
 }
 
-export default useCategoryBlogs;
+export default useBlogs;
