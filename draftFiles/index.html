@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="col">
+        <h1>SwiftUI Tutorial: Creating a responsive IOS Login Screen</h1>
+        <p>In SwiftUI, you can easily create a login screen for your app. A login screen typically consists of text fields for username and password input, along with buttons for logging in and signing up. Let's build a simple login screen in SwiftUI.</p>
+    
+        <div class="row justify-content-center">
+            <img class="screenshot" src="https://firebasestorage.googleapis.com/v0/b/onlinestore-4abc5.appspot.com/o/images%2Fimage1%20(3).png?alt=media&token=87377dd8-3053-4782-be33-519579cffe8b">
+        </div>
+        
+        <h2>Step 1: Design the User Interface</h2>
+        <p>First, design the login screen interface. It will include text fields for username and password, along with login and signup buttons:</p>
+        <div class="code-block">
+            <pre><code class="language-swift">import SwiftUI
+    
+    struct LoginView: View {
+        @State private var username = ""
+        @State private var password = ""
+    
+        var body: some View {
+            VStack {
+                TextField("Username", text: $username)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+    
+                SecureField("Password", text: $password)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+    
+                Button(action: {
+                    // Action for login button
+                }) {
+                    Text("Log In")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                        .padding(.horizontal)
+                }
+    
+                Button(action: {
+                    // Action for signup button
+                }) {
+                    Text("Sign Up")
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .cornerRadius(5)
+                        .padding(.horizontal)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.blue, lineWidth: 1)
+                        )
+                }
+            }
+            .padding()
+        }
+    }</code></pre>
+        </div>
+        <p>In this example, we've created text fields for username and password input, along with login and signup buttons. The `@State` properties are used to store the input values.</p>
+    
+        <h2>Step 2: Implement Authentication Logic</h2>
+        <p>Next, implement the authentication logic for the login and signup buttons. This could involve verifying the username and password against a database or some other authentication service:</p>
+        <div class="code-block">
+            <pre><code class="language-swift">import SwiftUI
+    
+    struct LoginView: View {
+        @State private var username = ""
+        @State private var password = ""
+    
+        var body: some View {
+            // UI code from Step 1...
+    
+                Button(action: {
+                    // Authentication logic for login button
+                    if username == "admin" && password == "password" {
+                        // Successful login
+                    } else {
+                        // Show error message
+                    }
+                }) {
+                    // Login button UI
+                }
+    
+                Button(action: {
+                    // Authentication logic for signup button
+                    // Implement signup functionality
+                }) {
+                    // Signup button UI
+                }
+            // End of UI code from Step 1...
+        }
+    }</code></pre>
+        </div>
+        <p>In this example, we've added placeholder authentication logic for the login button. You would replace this with your actual authentication code.</p>
+    
+        <h2>Step 3: Display Error Messages</h2>
+        <p>Optionally, you can display error messages to the user if login fails:</p>
+        <div class="code-block">
+            <pre><code class="language-swift">import SwiftUI
+    
+    struct LoginView: View {
+        @State private var username = ""
+        @State private var password = ""
+        @State private var errorMessage = ""
+    
+        var body: some View {
+            // UI code from Step 1...
+    
+                Button(action: {
+                    // Authentication logic for login button
+                    if username == "admin" && password == "password" {
+                        // Successful login
+                        errorMessage = ""
+                    } else {
+                        // Show error message
+                        errorMessage = "Invalid username or password"
+                    }
+                }) {
+                    // Login button UI
+                }
+                .alert(isPresented: $errorMessage) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
+    
+                Button(action: {
+                    // Authentication logic for signup button
+                    // Implement signup functionality
+                }) {
+                    // Signup button UI
+                }
+            // End of UI code from Step 1...
+        }
+    }</code></pre>
+        </div>
+        <p>In this example, we've added an error message state variable and display it using an alert if the login fails.</p>
+    
+        <p>With these steps, you've learned how to create a basic login screen in SwiftUI. You can further enhance it by adding features like password encryption, user authentication, and error handling. Feel free to customize the design and functionality to fit your app's requirements!</p>
+    </div>
+    
+</body>
+</html>
