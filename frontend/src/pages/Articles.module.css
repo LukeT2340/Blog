@@ -7,7 +7,7 @@
 .thumbnail {
     width: auto;
     max-width: 100%;
-    max-height: 16rem;
+    max-height: 40%;
     border-radius: 20px;
     padding: 10px;
     object-fit: contain;
