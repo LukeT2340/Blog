@@ -5,9 +5,8 @@
 }
 
 .thumbnail {
-    width: auto;
+    height: auto;
     max-width: 100%;
-    max-height: 5rem;
     border-radius: 20px;
     padding: 10px;
     object-fit: contain;
