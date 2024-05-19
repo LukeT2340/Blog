@@ -12,10 +12,6 @@
     color: var(--accent-color);
 }
 
-.navLink {
-    color: black;
-}
-
 .activeNavLink {
     border-bottom: 2px solid var(--accent-color);
 }
