@@ -16,6 +16,9 @@ const Search = () => {
 
     return (
         <div className="row m-5">
+            {blogs.length === 0 && (
+                <h3>No search results for '{searchText}'</h3>
+            )}
             {blogs && blogs.map((blog) => (
                 <BlogPreview key={blog.id} {...blog} />
             ))}

@@ -77,11 +77,6 @@ router.get('/search', async (req, res) => {
             order: [['createdAt', 'DESC']]
         });
 
-        // Check if any blogs match the search criteria
-        if (blogs.length === 0) {
-            return res.status(404).json({ message: 'No blogs found matching the search criteria' });
-        }
-
         // Return the matching blogs
         return res.status(200).json(blogs);
     } catch (error) {

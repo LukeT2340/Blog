@@ -32,7 +32,7 @@ export const useSearch = (searchText) => {
         };
 
         fetchBlogs();
-    }, []);  
+    }, [searchText]);  
     
     return { blogs, isLoading, error };
 }

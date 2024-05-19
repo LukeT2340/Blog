@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { usePost } from '../hooks/usePost';
-import "./prism.css"
+import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/components/prism-swift';
+import Prism from 'prismjs';
 
 const NewPost = () => {
     const { post, isSuccess, error} = usePost();
@@ -12,21 +14,21 @@ const NewPost = () => {
     <h2>Step 1: Create a Basic View</h2>
     <p>First, let's start by creating a basic SwiftUI view. This will serve as our foundation. We will build upon this by adding a background in subsequent steps:</p>
     <div class="code-block">
-        <pre><code class="language-swift">import SwiftUI
+        <pre>import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         Text("Hello, SwiftUI!")
     }
 }
-        </code></pre>
+        </pre>
     </div>
     <p>In this initial setup, we simply display a text view with the message "Hello, SwiftUI!".</p>
 
     <h2>Step 2: Add a Background</h2>
     <p>Next, use the <code>background()</code> modifier to add a background to the view. You can use a color, image, or another view as the background. Let's start with a color background:</p>
     <div class="code-block">
-        <pre><code class="language-swift">import SwiftUI
+        <pre>import SwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -34,12 +36,12 @@ struct ContentView: View {
             .background(Color.blue) // Example with color
     }
 }
-        </code></pre>
+        </pre>
     </div>
     <p>In this example, we add a blue background color to the text view.</p>
     <p>You can also use an image as the background. For this, ensure you have an image named "background" in your asset catalog:</p>
     <div class="code-block">
-        <pre><code class="language-swift">import SwiftUI
+        <pre>import SwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -47,7 +49,7 @@ struct ContentView: View {
             .background(Image("background")) // Example with image
     }
 }
-        </code></pre>
+        </pre>
     </div>
     <p>Here, we add an image as the background of the text view.</p>
 
@@ -159,7 +161,6 @@ struct ContentView: View {
     .container {
         max-width: 800px;
         margin: 2rem auto;
-        background-color: #ffffff;
         padding: 2rem;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -210,24 +211,12 @@ struct ContentView: View {
     /* Code Block Styles */
     .code-block {
         background-color: #f8f9fa;
-        padding: 1rem;
         border-radius: 4px;
-        border: 1px solid #dee2e6;
-        margin: 1rem 0;
         overflow-x: auto;
     }
     
     pre {
         margin: 0;
-    }
-    
-    code {
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 14px;
-        color: #e74c3c;
-        background-color: #f0f0f0;
-        padding: 0.2rem 0.4rem;
-        border-radius: 4px;
     }
     
     /* Section Heading Styles */
@@ -258,9 +247,7 @@ struct ContentView: View {
         font-size: 1.5rem;
         flex: 1;
     }
-    
-    
-    `;
+`;
 
     const [formData, setFormData] = useState({
         title: '',
@@ -296,14 +283,35 @@ struct ContentView: View {
     }
 
     const handlePreview = () => {
-        const contentWithInlineStyles = formData.content.replace(/style={{([^}]+)}}/g, (match, style) => {
+        const codeBlocks = [];
+        let contentWithInlineStyles = formData.content.replace(/style={{([^}]+)}}/g, (match, style) => {
             const inlineStyles = style.split(';').map(s => {
                 const [key, value] = s.split(':').map(str => str.trim());
                 return `${key}:${value}`;
             }).join(';');
             return `style=${inlineStyles}`;
         });
-
+    
+        // Extract code blocks and replace them with placeholders
+        contentWithInlineStyles = contentWithInlineStyles.replace(/<pre.*?>(.*?)<\/pre>/gs, (match, code) => {
+            const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+            codeBlocks.push(code);
+            return placeholder;
+        });
+    
+        // Apply PrismJS highlighting to code blocks
+        const highlightedCodeBlocks = codeBlocks.map(code => {
+            return Prism.highlight(code, Prism.languages.swift, 'swift');
+        });
+    
+        // Replace placeholders with highlighted code blocks
+        let index = 0;
+        contentWithInlineStyles = contentWithInlineStyles.replace(/__CODE_BLOCK_\d+__/g, () => {
+            const highlightedCode = highlightedCodeBlocks[index];
+            index++;
+            return `<pre class="language-swift">${highlightedCode}</pre>`;
+        });
+    
         const htmlTemplate = `
             <!DOCTYPE html>
             <html lang="en">
@@ -325,6 +333,7 @@ struct ContentView: View {
         `;
         setPreviewHtml(htmlTemplate);
     };
+    
     
 
     const handleSubmit = async (e) => {
