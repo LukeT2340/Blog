@@ -13,14 +13,16 @@ const BlogPreview = (blog) => {
                 <img src={blog.thumbnail} class={`${styles.thumbnail} mb-2`}></img>
                 <h1 className={`${styles.title} mx-1`}>{blog.title}</h1>
             </Link>
-            <p className={`${styles.description} mx-1`}>{blog.description}</p>
-            <div className="d-flex mt-auto m-2">
-                {tags.map((tag, index) => ( 
-                    <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
-                        <p className={`${styles.tagName}`}>{tag}</p>
-                    </Link>
-                ))}
-                <p className={`${styles.createdAt} ms-auto`}>{formattedDate}</p>
+            <div className="m-2 mt-auto">
+                <p className={`${styles.description} mx-1`}>{blog.description}</p>
+                <div className="d-flex mt-auto m-2">
+                    {tags.map((tag, index) => ( 
+                        <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
+                            <p className={`${styles.tagName}`}>{tag}</p>
+                        </Link>
+                    ))}
+                    <p className={`${styles.createdAt} ms-auto`}>{formattedDate}</p>
+                </div>
             </div>
         </div>
     );
