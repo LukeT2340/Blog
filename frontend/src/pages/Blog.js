@@ -71,7 +71,7 @@ const Blog = () => {
 {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}</h6>
 
                         {successfullyDeleted ? (
-                            <h5>Blog deleted.</h5>
+                            <h5 className='ms-auto'>Blog deleted.</h5>
                         ) : <>
                         {deletionError && (
                             <h5 className='ms-auto'>Error deleting blog.</h5>
