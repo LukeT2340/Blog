@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useLogin } from '../hooks/useLogin'
-import { Link } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import styles from './Login.module.css';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -69,7 +68,6 @@ const Login = () => {
 
                     <div className="row">
                         <Button type="submit" className={`${styles.loginButton} mt-1 mx-auto`}>
-                            {/* Show loading text when isLoading */}
                             {isLoading ? 'Logging in...' : 'Login'}
                         </Button>
                     </div>

@@ -9,16 +9,16 @@ import { useNavigate } from "react-router-dom";
 import { useDelete } from "../hooks/useDelete";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-// Displays the entire article
+// Displays the entire article including header, content, and actions like edit and delete.
 const Article = () => {
     const { articleTitle } = useParams();
     const { blog, isLoading, error } = useBlog(articleTitle);
     const { deleteBlog, successfullyDeleted, deletionError } = useDelete();
     const [ showFinalDeleteButton, setShowFinalDeleteButton ] = useState(false);
     const { admin } = useAuthContext();
-
     const navigate = useNavigate();
 
+    // Whenever the blog object changes, add Prism highlighting to the content
     useEffect(() => {
         if (blog && blog.content) {
             // Create a temporary DOM element to parse the HTML content
@@ -43,17 +43,14 @@ const Article = () => {
         }
     }, [blog]);
 
-    // If user clicks the delete button, an 'are you sure' prompt will appear.
     const handleFirstDeleteButtonClicked = () => {
         setShowFinalDeleteButton(true);
     }
 
-    // Delete the blog post
     const handleFinalDeleteButtonClicked = async () => {
         await deleteBlog(blog.id);
     }
 
-    // Navigate to the page where the user can edit the article
     const handleEditButtonClicked = () => {
         navigate(`/editBlog/${articleTitle}`)
     }
@@ -63,7 +60,7 @@ const Article = () => {
     }
 
     if (isLoading) {
-        return <div className={styles.loadingPage}></div>;
+        return <LoadingPage />;
     }
 
     if (error) {
@@ -74,19 +71,31 @@ const Article = () => {
         <div className='container col-lg-7 col-sm-12 py-0'>
             {blog && (
                 <>
-                <div className='d-flex'>
-                    <h6 className={`${styles.currentDirectory}`}>
-{`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}</h6>
+                    <ArticleHeader blog={blog} admin={admin} successfullyDeleted={successfullyDeleted} deletionError={deletionError} showFinalDeleteButton={showFinalDeleteButton} handleFinalDeleteButtonClicked={handleFinalDeleteButtonClicked} handleFirstDeleteButtonClicked={handleFirstDeleteButtonClicked} handleEditButtonClicked={handleEditButtonClicked} handleCancelDelete={handleCancelDelete} />
+                    <ArticleContent blog={blog} />
+                </>
+            )}
+        </div>
+    );
+}
 
-                        {successfullyDeleted ? (
-                            <h5 className='ms-auto'>Blog deleted.</h5>
-                        ) : <>
-                        {deletionError && (
-                            <h5 className='ms-auto'>Error deleting blog.</h5>
-                        )}
-                        {admin && (
-                            <>
-                                {showFinalDeleteButton ? (
+// Shows the user's current location on the website and gives admins edit and delete options
+const ArticleHeader = ({ blog, admin, successfullyDeleted, deletionError, showFinalDeleteButton, handleFinalDeleteButtonClicked, handleFirstDeleteButtonClicked, handleEditButtonClicked, handleCancelDelete }) => {
+    return (
+        <div className='d-flex'>
+            <h6 className={`${styles.currentDirectory}`}>
+                {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
+            </h6>
+            {successfullyDeleted ? (
+                <h5 className='ms-auto'>Blog deleted.</h5>
+            ) : (
+                <>
+                    {deletionError && (
+                        <h5 className='ms-auto'>Error deleting blog.</h5>
+                    )}
+                    {admin && (
+                        <>
+                            {showFinalDeleteButton ? (
                                 <div className='ms-auto'>
                                     <button className={` ${styles.deleteButton}`} onClick={handleFinalDeleteButtonClicked}>Confirm Delete</button>
                                     <button className={`${styles.cancelButton}`} onClick={handleCancelDelete}>Cancel</button>
@@ -97,20 +106,27 @@ const Article = () => {
                                     <button className={` ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
                                 </div>
                             )}
-                            </>
-                        )}</>}
-                        </div>
-                    <div>
-                        <div>
-                            <style dangerouslySetInnerHTML={{ __html: blog.styles }} />
-                            <div id="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} />
-                        </div>
-                        <p>Author: {blog.author}</p>
-                    </div>
+                        </>
+                    )}
                 </>
             )}
         </div>
     );
+}
+
+// Article content
+const ArticleContent = ({ blog }) => {
+    return (
+        <div>
+            <style dangerouslySetInnerHTML={{ __html: blog.styles }} />
+            <div id="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} />
+            <p>Author: {blog.author}</p>
+        </div>
+    );
+}
+
+const LoadingPage = () => {
+    return <div className={styles.loadingPage}></div>;
 }
 
 export default Article;
