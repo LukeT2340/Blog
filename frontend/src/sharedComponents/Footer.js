@@ -20,7 +20,7 @@ const Footer = () => {
                         </a>
                         <div className={`${styles.link} mt-2`}>
                             <FontAwesomeIcon icon={faEnvelope} className={styles.linkIcon}/>
-                            <p>Email: lukethompson220.com</p>
+                            <p>lukethompson220@gmail.com</p>
                         </div>
                     </div>
 
