@@ -58,6 +58,11 @@ const Blog = () => {
         return <div>Blog deleted.</div>
     }
 
+    if (deletionError) {
+        return <div>Error deleting blog.</div>
+    }
+
+
     if (isLoading) {
         return <div className={styles.loadingPage}></div>;
     }
@@ -74,12 +79,13 @@ const Blog = () => {
                         {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
                         {admin && (
                             <>
-                            <button className={`ms-auto ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
-                            {showFinalDeleteButton && (
+                            {showFinalDeleteButton ? (
                                 <div className='ms-auto'>
                                     <button className={`ms-auto ${styles.deleteButton}`} onClick={handleSecondDeleteButtonClicked}>Confirm Delete</button>
                                     <button className={`ms-auto ${styles.cancelButton}`} onClick={handleCancelDelete}>Cancel</button>
                                 </div>
+                            ) : (
+                                <button className={`ms-auto ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
                             )}
                             </>
                         )}
