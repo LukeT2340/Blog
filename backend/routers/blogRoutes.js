@@ -89,4 +89,32 @@ router.get('/search', async (req, res) => {
     }
 });
 
+// Endpoints under this require authentication
+router.use(requireAuth);
+
+// Delete blog
+router.post('/delete', async (req, res) => {
+    const blogId = req.body.blogId;
+
+    // Make sure blog id was provided
+    if (!blogId || blogId.trim() === "") {
+        return res.status(400).json({ message: "No blog id provided"});
+    }
+
+    try {
+        const result = Blog.destory({ where: {
+            id: blogId
+        }})
+
+        if (!result) {
+            return res.status(400).json({ message: "Failed to delete blog post"});
+        }
+
+        return res.status(200).json({ message: "Blog post destroyed"});
+    } catch (error) {
+        return res.status(400).json({ message: "Failed to delete blog post"});
+    }
+})
+
+
 module.exports = router;
