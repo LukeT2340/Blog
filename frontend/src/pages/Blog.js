@@ -68,11 +68,11 @@ const Blog = () => {
                 <>
                     <h6 className={`d-flex ${styles.currentDirectory}`}>
                         {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
-                        {successfullyDeleted && (
+                        {successfullyDeleted ? (
                             <h5>Blog deleted.</h5>
-                        )}
+                        ) : <>
                         {deletionError && (
-                            <h5>Error deleting blog.</h5>
+                            <h5 className='ms-auto'>Error deleting blog.</h5>
                         )}
                         {admin && (
                             <>
@@ -85,7 +85,8 @@ const Blog = () => {
                                 <button className={`ms-auto ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
                             )}
                             </>
-                        )}
+                        )}</>}
+                        
                     </h6>
                     <div>
                         <div>

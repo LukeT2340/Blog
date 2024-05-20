@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 // Deletes blog
 export const useDelete = () => {
-    const [error, setError] = useState(null);
-    const [isSuccess, setIsSuccess] = useState(null);
+    const [deletionError, setDeletionError] = useState(null);
+    const [successfullyDeleted, setSuccessfullyDeleted] = useState(null);
 
     const deleteBlog = async(blogId) => {
-        setError(null);
+        setDeletionError(null);
 
         // Retrieve token from storage
         const adminJson = localStorage.getItem('admin');
@@ -25,14 +25,14 @@ export const useDelete = () => {
         // Handle unsuccessful deletion
         if (!response.ok) {
             const errorData = await response.json();
-            setIsSuccess(false);
-            setError(errorData.message || 'Unknown server error. Please try again later.');
+            setSuccessfullyDeleted(false);
+            setDeletionError(errorData.message || 'Unknown server error. Please try again later.');
         }
 
         // Handle successful deletion
         if (response.ok) {
             const json = await response.json();        
-            setIsSuccess(true);
+            setSuccessfullyDeleted(true);
         }
     }
 
