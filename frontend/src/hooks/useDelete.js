@@ -26,7 +26,6 @@ export const useDelete = () => {
         if (!response.ok) {
             const errorData = await response.json();
             setIsSuccess(false);
-            console.log(errorData);
             setError(errorData.message || 'Unknown server error. Please try again later.');
         }
 
@@ -37,5 +36,5 @@ export const useDelete = () => {
         }
     }
 
-    return { deleteBlog, isSuccess, error };
+    return { deleteBlog, successfullyDeleted, deletionError } ;
 };
