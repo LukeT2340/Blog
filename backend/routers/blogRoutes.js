@@ -97,7 +97,7 @@ router.post('/delete', async (req, res) => {
     const blogId = req.body.blogId;
 
     // Make sure blog id was provided
-    if (!blogId || blogId.trim() === "") {
+    if (!blogId) {
         return res.status(400).json({ message: "No blog id provided"});
     }
 
