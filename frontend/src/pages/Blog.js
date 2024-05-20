@@ -66,8 +66,10 @@ const Blog = () => {
         <div className='container col-lg-7 col-sm-12 py-0'>
             {blog && (
                 <>
-                    <h6 className={`d-flex ${styles.currentDirectory}`}>
-                        {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
+                <div className='d-flex'>
+                    <h6 className={`${styles.currentDirectory}`}>
+{`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}</h6>
+
                         {successfullyDeleted ? (
                             <h5>Blog deleted.</h5>
                         ) : <>
@@ -86,8 +88,7 @@ const Blog = () => {
                             )}
                             </>
                         )}</>}
-                        
-                    </h6>
+                        </div>
                     <div>
                         <div>
                             <style dangerouslySetInnerHTML={{ __html: blog.styles }} />

@@ -7,3 +7,22 @@
     height: 80vh; 
     background-color: white; 
 }
+
+.deleteButton {
+    border: none;
+    outline: none;
+    background-color: var(--accent-color);
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.cancelButton {
+    border: none;
+    outline: none;
+    background-color: gray;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
