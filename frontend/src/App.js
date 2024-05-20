@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/Home.js';
+import EditBlog from './pages/EditBlog.js'
 import Blog from './pages/Blog.js';
 import Login from './pages/Login.js';
 import PostNew from './pages/PostNew.js';
@@ -21,7 +21,10 @@ function App() {
           <Routes> 
             <Route path="/login" element={<Login />} />
             {admin && (
-              <Route path='/postNewBlog' element={<PostNew />} />
+              <>
+                <Route path='/postNewBlog' element={<PostNew />} />
+                <Route path='/editBlog/:blogTitle' element={<EditBlog />} />
+              </>
             )}
             <Route path="/:blogTitle" element={<Blog />} /> 
             <Route path="/articles" element={<Articles />} />

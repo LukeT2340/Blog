@@ -44,41 +44,4 @@ router.post("/login", async (req, res) => {
 
 router.use(requireAuth);
 
-router.post('/postBlog', async (req, res) => {
-    try {
-        const blog = req.body.formData;
-        const { title, content, styles, category, tags, thumbnail, description } = blog;
-        const authorId = req.body.authorId;
-        // Validate the required fields
-        if (!title || !content || !styles || !authorId || !category || !description || !tags) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        const author = await Admin.findOne({ where: {id: authorId}});
-        if (!author) {
-            return res.status(400).json({ error: 'Author not found' });
-        }
-
-        const newBlog = new Blog({
-            title: title, 
-            content,
-            styles,
-            author: author.name,
-            category,
-            tags,
-            thumbnail,
-            description
-        });
-
-        // Save the blog to the database
-        await newBlog.save();
-
-        // Respond with success message
-        return res.status(201).json({ message: 'Blog posted successfully', blog: newBlog });
-    } catch (error) {
-        console.error('Error posting blog:', error);
-        return res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
 module.exports = router;

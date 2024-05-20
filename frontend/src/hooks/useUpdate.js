@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-export const usePost = () => {
-    const [error, setError] = useState(null);
-    const [isSuccess, setIsSuccess] = useState(null);
+// Update blog content
+export const useUpdate = () => {
+    const [errorUpdatingBlog, setErrorUpdatingBlog] = useState(null);
+    const [updateSuccessful, setUpdateSuccessful] = useState(null);
 
-    const post = async(formData) => {
-        setError(null);
+    const update = async(formData) => {
+        setErrorUpdatingBlog(null);
 
         // Retrieve token from storage
         const adminJson = localStorage.getItem('admin');
@@ -13,7 +14,7 @@ export const usePost = () => {
         const token = admin.token;
         const authorId = admin.user_id;
 
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/postBlog`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/update`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -22,20 +23,20 @@ export const usePost = () => {
         body: JSON.stringify({formData: formData, authorId: authorId})
         });
 
-        // Handle unsuccessful blog post
+        // Handle unsuccessful blog update
         if (!response.ok) {
             const errorData = await response.json();
-            setIsSuccess(false);
+            setUpdateSuccessful(false);
             console.log(errorData);
-            setError(errorData.errorMessage || 'Unknown server error. Please try again later.');
+            setErrorUpdatingBlog(errorData.errorMessage || 'Unknown server error. Please try again later.');
         }
 
-        // Handle successful blog post
+        // Handle successful blog update
         if (response.ok) {
             const json = await response.json();        
-            setIsSuccess(true);
+            setUpdateSuccessful(true);
         }
     }
 
-    return { post, isSuccess, error };
+    return { update, updateSuccessful, errorUpdatingBlog };
 };

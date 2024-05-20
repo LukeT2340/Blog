@@ -116,5 +116,71 @@ router.post('/delete', async (req, res) => {
     }
 })
 
+// Update existing blog post
+router.post('/update', async (req, res) => {
+    const updatedBlog = req.body.formData
+    const { id, title, content, styles, category, tags, thumbnail, description, authorId } = updatedBlog;
+
+    try {
+        const existingBlog = await Blog.findOne({ where: {
+            id: id
+        }})
+
+        if (!existingBlog) {
+            return res.status(400).json({ message: "Failed to find existing blog post"});
+        }
+
+        existingBlog.title = title;
+        existingBlog.content = content;
+        existingBlog.styles = styles;
+        existingBlog.category = category;
+        existingBlog.tags = tags;
+        existingBlog.thumbnail = thumbnail;
+        existingBlog.description = description;
+
+        existingBlog.save();
+
+        return res.status(200).json({ message: "Blog post updated"});
+    } catch (error) {
+        return res.status(400).json({ message: "Failed to update blog post"});
+    }
+})
+
+router.post('/postBlog', async (req, res) => {
+    try {
+        const blog = req.body.formData;
+        const { title, content, styles, category, tags, thumbnail, description } = blog;
+        const authorId = req.body.authorId;
+        // Validate the required fields
+        if (!title || !content || !styles || !authorId || !category || !description || !tags) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        const author = await Admin.findOne({ where: {id: authorId}});
+        if (!author) {
+            return res.status(400).json({ error: 'Author not found' });
+        }
+
+        const newBlog = new Blog({
+            title: title, 
+            content,
+            styles,
+            author: author.name,
+            category,
+            tags,
+            thumbnail,
+            description
+        });
+
+        // Save the blog to the database
+        await newBlog.save();
+
+        // Respond with success message
+        return res.status(201).json({ message: 'Blog posted successfully', blog: newBlog });
+    } catch (error) {
+        console.error('Error posting blog:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 module.exports = router;

@@ -26,3 +26,12 @@
     color: white;
     border-radius: 5px;
 }
+
+.editButton {
+    border: none;
+    outline: none;
+    background-color: rgb(49, 181, 37);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}

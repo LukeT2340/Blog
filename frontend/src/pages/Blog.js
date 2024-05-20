@@ -50,6 +50,10 @@ const Blog = () => {
         await deleteBlog(blog.id);
     }
 
+    const handleEditButtonClicked = () => {
+        navigate(`/editBlog/${blogTitle}`)
+    }
+
     const handleCancelDelete = () => {
         setShowFinalDeleteButton(false);
     }
@@ -78,13 +82,16 @@ const Blog = () => {
                         )}
                         {admin && (
                             <>
-                            {showFinalDeleteButton ? (
+                                {showFinalDeleteButton ? (
                                 <div className='ms-auto'>
-                                    <button className={`ms-auto ${styles.deleteButton}`} onClick={handleSecondDeleteButtonClicked}>Confirm Delete</button>
-                                    <button className={`ms-auto ${styles.cancelButton}`} onClick={handleCancelDelete}>Cancel</button>
+                                    <button className={` ${styles.deleteButton}`} onClick={handleSecondDeleteButtonClicked}>Confirm Delete</button>
+                                    <button className={`${styles.cancelButton}`} onClick={handleCancelDelete}>Cancel</button>
                                 </div>
                             ) : (
-                                <button className={`ms-auto ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
+                                <div className='ms-auto'>
+                                    <button className={`${styles.editButton}`} onClick={handleEditButtonClicked}>Edit</button>
+                                    <button className={` ${styles.deleteButton}`} onClick={handleFirstDeleteButtonClicked}>Delete Blog</button>
+                                </div>
                             )}
                             </>
                         )}</>}
