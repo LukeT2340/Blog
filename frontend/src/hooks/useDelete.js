@@ -27,7 +27,7 @@ export const useDelete = () => {
             const errorData = await response.json();
             setIsSuccess(false);
             console.log(errorData);
-            setError(errorData.errorMessage || 'Unknown server error. Please try again later.');
+            setError(errorData.message || 'Unknown server error. Please try again later.');
         }
 
         // Handle successful deletion

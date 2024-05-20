@@ -54,15 +54,6 @@ const Blog = () => {
         setShowFinalDeleteButton(false);
     }
 
-    if (successfullyDeleted) {
-        return <div>Blog deleted.</div>
-    }
-
-    if (deletionError) {
-        return <div>Error deleting blog.</div>
-    }
-
-
     if (isLoading) {
         return <div className={styles.loadingPage}></div>;
     }
@@ -77,6 +68,12 @@ const Blog = () => {
                 <>
                     <h6 className={`d-flex ${styles.currentDirectory}`}>
                         {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
+                        {successfullyDeleted && (
+                            <h5>Blog deleted.</h5>
+                        )}
+                        {deletionError && (
+                            <h5>Error deleting blog.</h5>
+                        )}
                         {admin && (
                             <>
                             {showFinalDeleteButton ? (
