@@ -102,7 +102,7 @@ router.post('/delete', async (req, res) => {
     }
 
     try {
-        const result = Blog.destory({ where: {
+        const result = Blog.destroy({ where: {
             id: blogId
         }})
 
