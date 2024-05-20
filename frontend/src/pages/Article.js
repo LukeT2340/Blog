@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useBlog from '../hooks/useBlog';
-import styles from './Blog.module.css';
+import styles from './Article.module.css';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css';
 import 'prismjs/components/prism-swift';
@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 import { useDelete } from "../hooks/useDelete";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const Blog = () => {
-    const { blogTitle } = useParams();
-    const { blog, isLoading, error } = useBlog(blogTitle);
+// Displays the entire article
+const Article = () => {
+    const { articleTitle } = useParams();
+    const { blog, isLoading, error } = useBlog(articleTitle);
     const { deleteBlog, successfullyDeleted, deletionError } = useDelete();
     const [ showFinalDeleteButton, setShowFinalDeleteButton ] = useState(false);
     const { admin } = useAuthContext();
@@ -42,16 +43,19 @@ const Blog = () => {
         }
     }, [blog]);
 
+    // If user clicks the delete button, an 'are you sure' prompt will appear.
     const handleFirstDeleteButtonClicked = () => {
         setShowFinalDeleteButton(true);
     }
 
-    const handleSecondDeleteButtonClicked = async () => {
+    // Delete the blog post
+    const handleFinalDeleteButtonClicked = async () => {
         await deleteBlog(blog.id);
     }
 
+    // Navigate to the page where the user can edit the article
     const handleEditButtonClicked = () => {
-        navigate(`/editBlog/${blogTitle}`)
+        navigate(`/editBlog/${articleTitle}`)
     }
 
     const handleCancelDelete = () => {
@@ -84,7 +88,7 @@ const Blog = () => {
                             <>
                                 {showFinalDeleteButton ? (
                                 <div className='ms-auto'>
-                                    <button className={` ${styles.deleteButton}`} onClick={handleSecondDeleteButtonClicked}>Confirm Delete</button>
+                                    <button className={` ${styles.deleteButton}`} onClick={handleFinalDeleteButtonClicked}>Confirm Delete</button>
                                     <button className={`${styles.cancelButton}`} onClick={handleCancelDelete}>Cancel</button>
                                 </div>
                             ) : (
@@ -109,4 +113,4 @@ const Blog = () => {
     );
 }
 
-export default Blog;
+export default Article;

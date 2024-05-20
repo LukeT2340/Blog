@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import EditBlog from './pages/EditBlog.js'
-import Blog from './pages/Blog.js';
+import Article from './pages/Article.js';
 import Login from './pages/Login.js';
 import PostNew from './pages/PostNew.js';
 import Articles from './pages/Articles.js';
@@ -26,7 +26,7 @@ function App() {
                 <Route path='/editBlog/:blogTitle' element={<EditBlog />} />
               </>
             )}
-            <Route path="/:blogTitle" element={<Blog />} /> 
+            <Route path="/:articleTitle" element={<Article />} /> 
             <Route path="/articles" element={<Articles />} />
             <Route path="/search/:searchText" element={<Search />} />
             <Route path="*" element={<Navigate to="/articles" />} />

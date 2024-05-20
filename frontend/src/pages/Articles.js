@@ -4,6 +4,7 @@ import styles from "./Articles.module.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BlogPreview from "../sharedComponents/BlogPreview";
 
+// Fetches all existing articles and displays titles, descriptions and thumbnails
 const Articles = () => {
     const { blogs, isLoading, error } = useBlogs();
 
