@@ -82,7 +82,7 @@ const Article = () => {
 // Shows the user's current location on the website and gives admins edit and delete options
 const ArticleHeader = ({ blog, admin, successfullyDeleted, deletionError, showFinalDeleteButton, handleFinalDeleteButtonClicked, handleFirstDeleteButtonClicked, handleEditButtonClicked, handleCancelDelete }) => {
     return (
-        <div className='d-flex'>
+        <div className='d-flex mt-2'>
             <h6 className={`${styles.currentDirectory}`}>
                 {`Articles -> SwiftUI -> ${blog.category} -> ${blog.title}`}
             </h6>
