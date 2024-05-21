@@ -36,6 +36,7 @@
 .footer p {
     margin: 5px 0;
     color: white;
+    font-size: 0.9rem;
 }
 
 .footer .container {
@@ -65,13 +66,4 @@
 
 .contact h5, .about h5 {
     font-size: 1.3rem;
-}
-
-.contact p {
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.about p {
-    font-size: 0.8rem;
 }
