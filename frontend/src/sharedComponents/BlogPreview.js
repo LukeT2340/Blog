@@ -23,11 +23,11 @@ const BlogPreview = (blog) => {
 
     return (
         <div
-        className={`col-lg-3 col-md-5 col-sm-10`}
+        className={`col-lg-2 col-md-5 col-sm-10`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
     >
-            <div className={`d-flex flex-column m-5 shadow ${styles.blogPreview}`}>
+            <div className={`d-flex flex-column m-0 shadow ${styles.blogPreview}`}>
                 <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-content-center`}>
                     <div className={styles.imageContainer}>
                         <img src={blog.thumbnail} className={`${styles.thumbnail}`}></img>
@@ -39,7 +39,7 @@ const BlogPreview = (blog) => {
                 </Link>
                 <p className={`${styles.description} mx-2`}>{blog.description}</p>
                 <div className="mx-2 mt-auto">
-                    <div className="d-flex ">
+                    <div className="d-flex align-items-center justify-content-center ">
                         {tags.map((tag, index) => ( 
                             <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
                                 <p className={`${styles.tagName}`}>{tag}</p>
