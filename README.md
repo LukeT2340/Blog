@@ -4,7 +4,7 @@ Welcome to the SwiftUI Tutorials Blog! This is a blog site built using React, Ex
 
 [Master Swift](https://masterswift.netlify.app)
 
-![image](https://github.com/LukeT2340/Blog/assets/83848772/28a08f43-30a2-45a6-8566-d0559cefce90)
+![image](https://github.com/LukeT2340/Blog/assets/83848772/60af7563-fb7d-425a-b2b8-81a7d1946cb1)
 
 ## Features
 
