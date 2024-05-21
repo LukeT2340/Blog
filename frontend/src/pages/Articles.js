@@ -19,12 +19,12 @@ const Articles = () => {
     }
 
     return (
-        <div className={`d-flex flex-column ${styles.articlesPage} align-items-center  justify-items-center col m-0 p-0`}>
+        <div className={`${styles.articlesPage} align-items-center justify-items-center col m-0 p-0`}>
             <div className={`${styles.articleHeader}`}>
                 <h2 className={`${styles.articleTitle}`}>Latest Articles</h2>
                 <p className={`${styles.articleBlurb}`}>Explore in-depth articles covering iOS programming, techniques, language features, architectural patterns, and beyond.</p>
             </div>
-            <div className="mx-3 d-flex">
+            <div className="row justify-content-center my-5">
                 {blogs && blogs.map((blog) => (
                     <BlogPreview key={blog.id} {...blog} />
                 ))}

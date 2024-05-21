@@ -23,28 +23,30 @@ const BlogPreview = (blog) => {
 
     return (
         <div
-        className={`d-flex flex-column shadow p-1 m-2 ${styles.blogPreview}`}
+        className={`col-lg-3 col-md-5 col-sm-10`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
     >
-                <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-items-center`}>
-                <div className={styles.imageContainer}>
-                    <img src={blog.thumbnail} className={`${styles.thumbnail} mb-2`}></img>
-                    {isHovered && (
-                        <FontAwesomeIcon icon={faHandPointUp} className={`${styles.overlayIcon}`} />
-                    )}
-                </div>
-                <h1 className={`${styles.title} mx-3`}>{blog.title}</h1>
-            </Link>
-            <p className={`${styles.description} mx-3`}>{blog.description}</p>
-            <div className="mx-2 mt-auto">
-                <div className="d-flex ">
-                    {tags.map((tag, index) => ( 
-                        <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
-                            <p className={`${styles.tagName}`}>{tag}</p>
-                        </Link>
-                    ))}
-                    <p className={`${styles.createdAt} ms-auto`}>{formattedDate}</p>
+            <div className={`d-flex flex-column m-5 shadow ${styles.blogPreview}`}>
+                <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-content-center`}>
+                    <div className={styles.imageContainer}>
+                        <img src={blog.thumbnail} className={`${styles.thumbnail}`}></img>
+                        {isHovered && (
+                            <FontAwesomeIcon icon={faHandPointUp} className={`${styles.overlayIcon}`} />
+                        )}
+                    </div>
+                    <h1 className={`${styles.title} mx-2 mt-2`}>{blog.title}</h1>
+                </Link>
+                <p className={`${styles.description} mx-2`}>{blog.description}</p>
+                <div className="mx-2 mt-auto">
+                    <div className="d-flex ">
+                        {tags.map((tag, index) => ( 
+                            <Link to={`/tag/${tag}`} className={`${styles.tagLink}`} key={index}>
+                                <p className={`${styles.tagName}`}>{tag}</p>
+                            </Link>
+                        ))}
+                        <p className={`${styles.createdAt} ms-auto`}>{formattedDate}</p>
+                    </div>
                 </div>
             </div>
         </div>

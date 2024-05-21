@@ -9,7 +9,7 @@ const Footer = () => {
     // About me section
     const AboutMeSection = () => {
         return (
-            <div className={`${styles.about} col-md-6`}>
+            <div className={`${styles.about} col-md-3`}>
                 <h5>About</h5>
                 <p className={`${styles.paragraph}`}>Welcome to Master Swift! This blog is dedicated to providing high-quality tutorials, tips, and resources for learning SwiftUI - Apple's powerful and intuitive framework for building beautiful and engaging user interfaces across all Apple platforms.</p>
             </div>
@@ -19,7 +19,7 @@ const Footer = () => {
     // Contact section
     const ContactSection = () => {
         return (
-            <div className={`${styles.contact} col-md-6`}>
+            <div className={`${styles.contact} col-md-3`}>
                 <h5>Contact</h5>
                 <a href="https://github.com/LukeT2340" className={styles.link}>
                     <img className={styles.linkIcon} src="./github-mark-white.png"></img>
@@ -47,7 +47,7 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
-                <div className="row">
+                <div className="d-flex justify-content-between">
                     <AboutMeSection />
                     <ContactSection />
                 </div>

@@ -29,7 +29,7 @@ const Search = () => {
                 {blogs && blogs.length === 0 ? (
                     <h3 className={styles.noResultsPage}>No search results for '{searchText}'</h3>
                 ) : <h3> Search results for '{searchText}'</h3>}
-                <div className="d-flex">
+                <div className="d-flex w-100 justify-content-center my-5">
                     {blogs && blogs.map((blog) => (
                         <BlogPreview key={blog.id} {...blog} />
                     ))}

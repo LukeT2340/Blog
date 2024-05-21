@@ -26,8 +26,8 @@ const Login = () => {
         await login(username, password);
     }
     return (
-        <Container className={`${styles.loginOuterContainer} d-flex justify-content-center align-items-center`}>
-            <div className="login-box col-5 border shadow justify-items-center align-items-center p-5">
+        <div className='d-flex justify-content-center'>
+            <div className="col-3 border shadow p-5">
                 {admin && (
                     <div onClick={logout}>
                         <Button>Logout</Button>
@@ -68,7 +68,7 @@ const Login = () => {
 
                     <div className="row">
                         <Button type="submit" className={`${styles.loginButton} mt-1 mx-auto`}>
-                            {isLoading ? 'Logging in...' : 'Login'}
+                                {isLoading ? 'Logging in...' : 'Login'}
                         </Button>
                     </div>
                 </Form>
@@ -76,7 +76,7 @@ const Login = () => {
                     <p style={{ color: 'red', textAlign: 'left', 'font-size': '12px' }}>{error}</p>)
                     }         
             </div>
-        </Container>
+        </div>
     );
 };
 

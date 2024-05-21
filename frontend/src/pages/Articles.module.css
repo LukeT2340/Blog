@@ -1,22 +1,18 @@
-.articlesPage {
-    height: 100vh;
-}
 
 .blogPreview {
-    height: 25em;
-    width: 20rem;
+    height: 23em;
     border-radius: 20px;
+    padding: 0.6rem;
 }
 
 .blogPreview:hover {
-    transition: 0.4s ease-in-out;
-    width: 22rem;
+    transition: 0.6s ease-in-out;
+    padding: 0.25rem;
 }
 
 .imageContainer {
     position: relative;
     display: inline-block;
-    margin: 0.65rem;
 }
 
 .thumbnail {
@@ -59,13 +55,23 @@
     object-fit: cover;
 }
 
-.title {
-    font-size: 1.1rem;
-    font-weight: 700;
+.description {
+    font-size: 0.8rem !important;
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis; 
 }
 
-.description {
-    font-size: 0.85rem;
+.title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis; 
 }
 
 .tagLink {
@@ -94,9 +100,8 @@
 
 .articleHeader {
     text-align: center;
-    margin-bottom: 2rem;
-    background-color: #f6f6f6; 
-    padding-block: 4rem; 
+    background-color: #e3e3e3; 
+    padding-block: 2rem; 
     width: 100%;
 }
 
@@ -107,10 +112,9 @@
     margin-bottom: 10px;
 }
 
-.articleBlurb {
+.description {
     font-size: 1rem;
     color: #666;
-    padding-inline: 3rem;
 }
 
 .loadingPage {

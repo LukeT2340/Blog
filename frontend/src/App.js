@@ -16,8 +16,8 @@ function App() {
 
   return (
     <Router>
+        <div className="d-flex flex-column min-vh-100 justify-content-between">
         <CustomNavBar />
-        <div className='d-flex justify-content-center align-items-center'>
           <Routes> 
             <Route path="/login" element={<Login />} />
             {admin && (
@@ -31,8 +31,8 @@ function App() {
             <Route path="/search/:searchText" element={<Search />} />
             <Route path="*" element={<Navigate to="/articles" />} />
           </Routes>
-        </div>
         <Footer />
+        </div>
     </Router>
   );
 }
