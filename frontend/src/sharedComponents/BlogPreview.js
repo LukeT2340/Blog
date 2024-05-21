@@ -23,11 +23,11 @@ const BlogPreview = (blog) => {
 
     return (
         <div
-        className={`col-xl-2 col-lg-3 col-md-5 col-sm-10 mx-5 `}
+        className={`col-xl-2 col-lg-3 col-md-5 col-sm-10 `}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
     >
-            <div className={`d-flex flex-column m-0 shadow ${styles.blogPreview}`}>
+            <div className={`d-flex flex-column m-0 shadow ${styles.blogPreview} mx-2`}>
                 <Link to={`/${urlTitle}`} className={`d-flex ${styles.titleLink} flex-column justify-content-center`}>
                     <div className={styles.imageContainer}>
                         <img src={blog.thumbnail} className={`${styles.thumbnail}`}></img>
