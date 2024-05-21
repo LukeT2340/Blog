@@ -24,7 +24,7 @@ const Articles = () => {
                 <h2 className={`${styles.articleTitle}`}>Latest Articles</h2>
                 <p className={`${styles.articleBlurb}`}>Explore in-depth articles covering iOS programming, techniques, language features, architectural patterns, and beyond.</p>
             </div>
-            <div className="mx-3 ">
+            <div className="mx-3 d-flex">
                 {blogs && blogs.map((blog) => (
                     <BlogPreview key={blog.id} {...blog} />
                 ))}
