@@ -23,7 +23,7 @@ const BlogPreview = (blog) => {
 
     return (
         <div
-        className={`col-xl-2 col-lg-3 col-md-5 col-sm-10`}
+        className={`col-xl-2 col-lg-3 col-md-5 col-sm-10 mx-5 `}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
     >
