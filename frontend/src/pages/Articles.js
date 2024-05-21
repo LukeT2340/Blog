@@ -19,12 +19,12 @@ const Articles = () => {
     }
 
     return (
-        <div className={`${styles.articlesPage} col m-0 p-0`}>
-            <div class={`${styles.articleHeader}`}>
-                <h2 class={`${styles.articleTitle}`}>Latest Articles</h2>
-                <p class={`${styles.articleBlurb}`}>Explore in-depth articles covering iOS programming, techniques, language features, architectural patterns, and beyond.</p>
+        <div className={`d-flex flex-column ${styles.articlesPage} align-items-center  justify-items-center col m-0 p-0`}>
+            <div className={`${styles.articleHeader}`}>
+                <h2 className={`${styles.articleTitle}`}>Latest Articles</h2>
+                <p className={`${styles.articleBlurb}`}>Explore in-depth articles covering iOS programming, techniques, language features, architectural patterns, and beyond.</p>
             </div>
-            <div className="row justify-content-center align-items-center my-3 mx-5">
+            <div className="mx-3 ">
                 {blogs && blogs.map((blog) => (
                     <BlogPreview key={blog.id} {...blog} />
                 ))}

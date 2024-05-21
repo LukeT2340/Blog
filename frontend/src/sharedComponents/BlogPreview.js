@@ -23,7 +23,7 @@ const BlogPreview = (blog) => {
 
     return (
         <div
-        className={`d-flex flex-column shadow col-md-2 col-sm-10 p-1 m-2 ${styles.blogPreview}`}
+        className={`d-flex flex-column shadow p-1 m-2 ${styles.blogPreview}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
     >

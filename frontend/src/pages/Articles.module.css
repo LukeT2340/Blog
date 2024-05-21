@@ -1,21 +1,29 @@
 .articlesPage {
-    height: 80vh;
+    height: 100vh;
 }
 
 .blogPreview {
     height: 25em;
+    width: 20rem;
     border-radius: 20px;
 }
 
 .blogPreview:hover {
     transition: 0.4s ease-in-out;
-    width: 28rem;
+    width: 22rem;
 }
 
 .imageContainer {
     position: relative;
     display: inline-block;
     margin: 0.65rem;
+}
+
+.thumbnail {
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .overlayIcon {
@@ -40,13 +48,6 @@
     100% {
         transform: translate(-50%, -50%) scale(1.2);
     }
-}
-
-.thumbnail {
-    height: 150px;
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
 }
 
 .titleLink {
@@ -96,6 +97,7 @@
     margin-bottom: 2rem;
     background-color: #f6f6f6; 
     padding-block: 4rem; 
+    width: 100%;
 }
 
 .articleTitle {

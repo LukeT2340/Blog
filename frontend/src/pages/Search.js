@@ -25,16 +25,14 @@ const Search = () => {
     }
 
     return (
-        <div className="col m-0 p-0">
-        <div className="d-flex row justify-content-center align-items-center my-3 mx-5">
-            {blogs && blogs.length === 0 ? (
-                <h3 className={styles.noResultsPage}>No search results for '{searchText}'</h3>
-            ) : <h3> Search results for '{searchText}'</h3>}
-            {blogs && blogs.map((blog) => (
-                <BlogPreview key={blog.id} {...blog} />
-            ))}
-        </div>
-        </div>
+            <div className={`${styles.page} d-flex flex-column align-items-center  justify-items-center col m-0 p-0`}>
+                {blogs && blogs.length === 0 ? (
+                    <h3 className={styles.noResultsPage}>No search results for '{searchText}'</h3>
+                ) : <h3> Search results for '{searchText}'</h3>}
+                {blogs && blogs.map((blog) => (
+                    <BlogPreview key={blog.id} {...blog} />
+                ))}
+            </div>
     );
 }
 
