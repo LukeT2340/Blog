@@ -1,5 +1,9 @@
+.articlesPage {
+    height: 80vh;
+}
+
 .blogPreview {
-    height: 25rem;
+    height: 25em;
     border-radius: 20px;
 }
 

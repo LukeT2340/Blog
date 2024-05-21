@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser'); 
-const Blog = require('../models/Blog')
+const Blog = require('../models/Blog');
+const Admin = require('../models/Admin');
 const { Sequelize } = require('sequelize'); 
 const { Op } = require('sequelize');
 

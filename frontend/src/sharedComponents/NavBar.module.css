@@ -12,6 +12,15 @@
     color: var(--accent-color);
 }
 
+.navLink {
+    font-weight: 600;
+}
+
+.navLink:hover {
+    color: black;
+}
+
 .activeNavLink {
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    color: black;
 }

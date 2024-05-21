@@ -19,7 +19,7 @@ const Articles = () => {
     }
 
     return (
-        <div className="col m-0 p-0">
+        <div className={`${styles.articlesPage} col m-0 p-0`}>
             <div class={`${styles.articleHeader}`}>
                 <h2 class={`${styles.articleTitle}`}>Latest Articles</h2>
                 <p class={`${styles.articleBlurb}`}>Explore in-depth articles covering iOS programming, techniques, language features, architectural patterns, and beyond.</p>

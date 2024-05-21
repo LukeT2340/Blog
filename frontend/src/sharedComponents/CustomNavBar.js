@@ -33,9 +33,6 @@ const CustomNavbar = () => {
                     <Nav.Link href="/articles" className={`d-flex align-items-center ${styles.navLink} ${isActive('/articles')}`}>
                         Articles
                     </Nav.Link>
-                    <Nav.Link href="/about" className={`d-flex align-items-center ${styles.navLink} ${isActive('/about')}`}>
-                        About
-                    </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
 
