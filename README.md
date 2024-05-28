@@ -1,5 +1,7 @@
 # SwiftUI Tutorials Blog
 
+edit: I'm constantly learning. Looking back at this code I see many areas for improvement. If you want to see my current skill level with React and Express please checkout my Facebook clone. Thanks!
+
 Welcome to the SwiftUI Tutorials Blog! This is a blog site built using React, Express, and MySQL where you can find tutorials and resources for SwiftUI. Check out the site so far:
 
 [Master Swift](https://masterswift.netlify.app)
